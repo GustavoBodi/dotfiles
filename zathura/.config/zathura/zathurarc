@@ -1,0 +1,16 @@
+set window-title-basename "true"
+set selection-clipboard "clipboard"
+
+# Dracula color theme for Zathura
+# Swaps Foreground for Background to get a light version if the user prefers
+
+#
+# Dracula color theme
+#
+
+include catppuccin
+#
+# Startup options
+#
+set adjust-open width
+set recolor true
