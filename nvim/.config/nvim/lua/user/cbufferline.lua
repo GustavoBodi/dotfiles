@@ -1,5 +1,6 @@
 -- Set barbar's options
 require'bufferline'.setup ({
+  options = {
   -- Enable/disable animations
   animation = true,
 
@@ -71,4 +72,5 @@ require'bufferline'.setup ({
   -- Sets the name of unnamed buffers. By default format is "[Buffer X]"
   -- where X is the buffer number. But only a static string is accepted here.
   no_name_title = nil,
+  }
 })

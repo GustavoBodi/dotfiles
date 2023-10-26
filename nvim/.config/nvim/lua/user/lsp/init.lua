@@ -1,12 +1,7 @@
-require'lspconfig'.pyright.setup{}
-require'lspconfig'.clangd.setup{}
-require'lspconfig'.gdscript.setup{}
-require'lspconfig'.texlab.setup{}
-require'lspconfig'.lua_ls.setup{}
-require'lspconfig'.ccls.setup{}
-require'lspconfig'.html.setup{}
+require("nvim-lsp-installer").setup{}
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
+vim.diagnostic.config{virtual_text=true}
 local opts = { noremap=true, silent=true }
 vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
 vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
@@ -41,13 +36,25 @@ local lsp_flags = {
   debounce_text_changes = 150,
 }
 
-require('lspconfig')['pyright'].setup{
-    on_attach = on_attach,
-    flags = lsp_flags,
+require('lspconfig')['omnisharp'].setup{}
+
+require('lspconfig')['eslint'].setup{}
+
+require('lspconfig')['svls'].setup {
+  default_config = {
+    cmd = { "svls", "-d" },
+    filetypes = { "verilog", "systemverilog" },
+    root_dir = ".git"
+  };
+  docs = {
+    description = [[
+      https://github.com/dalance/svls
+      Language server for verilog and SystemVerilog
+    ]];
+  }
 }
 
 require('lspconfig')['html'].setup {
-  on_attach = on_attach,
   flags = lsp_flags,
     filetypes = {"rust"},
     init_options = {
@@ -58,14 +65,12 @@ require('lspconfig')['html'].setup {
 }
 
 require('lspconfig')['clangd'].setup {
-  on_attach = on_attach,
   flags = lsp_flags,
 }
 
 require'lspconfig'.tailwindcss.setup{
-    on_attach = on_attach,
     flags = lsp_flags,
-    filetypes = {"rust"},
+    filetypes = {"rust", "svelte", "javascript", "typescript", "typescriptreact"},
     init_options = {
       userLanguages = {
         rust = "html",
@@ -74,26 +79,63 @@ require'lspconfig'.tailwindcss.setup{
 }
 
 require('lspconfig')['lua_ls'].setup{
-    on_attach = on_attach,
     flags = lsp_flags,
 }
 
 require('lspconfig')['texlab'].setup{
-    on_attach = on_attach,
     flags = lsp_flags,
 }
 
 require('lspconfig')['tsserver'].setup{
-    on_attach = on_attach,
     flags = lsp_flags,
+    init_options = {
+      preferences = {
+        includeInlayParameterNameHints = 'all',
+        includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+        includeInlayFunctionParameterTypeHints = true,
+        includeInlayVariableTypeHints = true,
+        includeInlayPropertyDeclarationTypeHints = true,
+        includeInlayFunctionLikeReturnTypeHints = true,
+        includeInlayEnumMemberValueHints = true,
+        importModuleSpecifierPreference = 'non-relative',
+      },
+    },
+    on_attach = function(client, bufnr)
+      vim.lsp.inlay_hint(bufnr, true)
+      on_attach(client, bufnr)
+    end,
 }
 
 require('lspconfig')['rust_analyzer'].setup{
-    on_attach = on_attach,
     flags = lsp_flags,
     -- Server-specific settings...
-    settings = {
-      ["rust-analyzer"] = {}
-    }
+    init_options = {
+      preferences = {
+        includeInlayParameterNameHints = 'all',
+        includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+        includeInlayFunctionParameterTypeHints = true,
+        includeInlayVariableTypeHints = true,
+        includeInlayPropertyDeclarationTypeHints = true,
+        includeInlayFunctionLikeReturnTypeHints = true,
+        includeInlayEnumMemberValueHints = true,
+        importModuleSpecifierPreference = 'non-relative',
+      },
+    },
+    on_attach = function(client, bufnr)
+      vim.lsp.inlay_hint(bufnr, true)
+      on_attach(client, bufnr)
+    end,
 }
 
+require'lspconfig'.hdl_checker.setup{}
+
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = { '*.rs' },
+  command = 'lua vim.lsp.inlay_hint(1, true)',
+  group = vim.api.nvim_create_augroup('MyAutocmdsRustInlayHints', {}),
+})
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = { '*.tsx', '*.ts', '*.jsx', '*.js' },
+  command = 'silent! EslintFixAll',
+  group = vim.api.nvim_create_augroup('MyAutocmdsJavaScripFormatting', {}),
+})

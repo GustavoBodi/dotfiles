@@ -76,6 +76,7 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-cmdline" -- cmdline completions
 
   -- Themes
+  use "savq/melange-nvim"
 	use "lunarvim/colorschemes"
   use "savq/melange"
   use "projekt0n/github-nvim-theme"
@@ -86,8 +87,8 @@ return packer.startup(function(use)
   use "rust-lang/rust.vim"
 
   -- snippets
-  use "saadparwaiz1/cmp_luasnip" -- snippet completions
   use "L3MON4D3/LuaSnip" --snippet engine
+  use "saadparwaiz1/cmp_luasnip" -- snippet completions
 
   -- Enable Lsp
 	use "neovim/nvim-lspconfig"
@@ -95,6 +96,9 @@ return packer.startup(function(use)
   -- Simple to use language server installer
   use "williamboman/nvim-lsp-installer"
   use 'hrsh7th/cmp-nvim-lsp'
+
+  -- Friendly Snippets
+  use 'rafamadriz/friendly-snippets'
 
   -- Autopairs, integrates with both cmp and treesitter
   use "windwp/nvim-autopairs"
@@ -111,7 +115,7 @@ return packer.startup(function(use)
     run = ":TSUpdate",
   }
   -- Colored Brackets in Nvim
-  use "p00f/nvim-ts-rainbow"
+  use "HiPhish/rainbow-delimiters.nvim"
 
   -- Plugin for Configuration and Coloring the text
   use "nvim-treesitter/playground"
@@ -120,11 +124,11 @@ return packer.startup(function(use)
   use "lervag/vimtex"
 
   -- Plugin for the line at the top for the tabs
-  -- use "akinsho/bufferline.nvim"
-  use {
-    'romgrk/barbar.nvim',
-    requires = {'kyazdani42/nvim-web-devicons'}
-  }
+  use "akinsho/bufferline.nvim"
+  -- use {
+  --   'romgrk/barbar.nvim',
+  --   requires = {'kyazdani42/nvim-web-devicons'}
+  -- }
   use 'kazhala/close-buffers.nvim'
 
   -- Tmux Bar Sharing
@@ -170,7 +174,17 @@ return packer.startup(function(use)
   -- Git Sings for lateral bar
   use("lewis6991/gitsigns.nvim")
 
+  -- Java
+  use("mfussenegger/nvim-jdtls")
+
+  -- Tabs and Spaces Standardizer
+  use("tenxsoydev/tabs-vs-spaces.nvim")
+
   use {'srcery-colors/srcery-vim', as = 'srcery'}
+
+  -- Omnisharp definition extension
+  use {'Hoffs/omnisharp-extended-lsp.nvim'}
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then

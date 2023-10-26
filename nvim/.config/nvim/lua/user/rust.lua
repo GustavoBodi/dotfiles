@@ -18,7 +18,7 @@ local opts = {
 		-- opened file. For now, write to the file to trigger a reapplication of
 		-- the hints or just run :RustSetInlayHints.
 		-- default: true
-		autoSetHints = true,
+		autoSetHints = false,
 
 		-- whether to show hover actions inside the hover window
 		-- this overrides the default hover handler so something like lspsaga.nvim's hover would be overriden by this
@@ -37,7 +37,7 @@ local opts = {
 		inlay_hints = {
 
 			-- Only show inlay hints for the current line
-			only_current_line = true,
+			only_current_line = false,
 
 			-- Event which triggers a refersh of the inlay hints.
 			-- You can make this "CursorMoved" or "CursorMoved,CursorMovedI" but
@@ -48,11 +48,11 @@ local opts = {
 
 			-- whether to show parameter hints with the inlay hints or not
 			-- default: true
-			show_parameter_hints = true,
+			show_parameter_hints = false,
 
 			-- whether to show variable name before type hints with the inlay hints or not
 			-- default: false
-			show_variable_name = true,
+			show_variable_name = false,
 
 			-- prefix for parameter hints
 			-- default: "<-"
@@ -183,6 +183,7 @@ local opts = {
 		-- standalone file support
 		-- setting it to false may improve startup time
 		standalone = true,
+    -- Server-specific settings...
 	}, -- rust-analyer options
 
 	-- debugging stuff
@@ -194,4 +195,4 @@ local opts = {
 		},
 	},
 }
-require('rust-tools').setup(opts)
+-- require('rust-tools').setup(opts)

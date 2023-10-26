@@ -16,6 +16,7 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 
+keymap("n", "gd", "<Cmd>lua require('omnisharp_extended').telescope_lsp_definitions()<cr>", opts)
 
 keymap('n', '<A-i>', ":ToggleTerm<CR>", opts)
 keymap('t', '<A-i>', "<Cmd>ToggleTerm<CR>", opts)

@@ -1,5 +1,10 @@
-include ./theme.conf
 font_family JetBrainsMono Nerd Font
 font_size 13.0
-background_opacity 0.94
+background_opacity 0.98
 
+
+
+# BEGIN_KITTY_THEME
+# kanagawabones
+include current-theme.conf
+# END_KITTY_THEME

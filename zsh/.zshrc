@@ -90,7 +90,11 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(
 	git
     zsh-autosuggestions
+    git
+    ssh-agent
 )
+
+zstyle :omz:plugins:ssh-agent identities github gitlab
 
 source $ZSH/oh-my-zsh.sh
 
@@ -128,7 +132,19 @@ export LC_ALL=en_US.UTF-8
 export PATH=/home/gustavo/.nimble/bin:/home/gustavo/vulkan/1.3.216.0/x86_64/bin:/home/gustavo/vulkan/1.3.216.0/x86_64/bin:/home/gustavo/.cargo/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin
 export PATH=/home/gustavo/.scripts/:$PATH
 export PATH=/home/gustavo/.local/bin:$PATH
-export PATH=/opt/texlive/2022/bin/x86_64-linux/:$PATH
+export PATH=/home/gustavo/.local/share/JetBrains/Toolbox/scripts/:$PATH
+export PATH=/opt/texlive/2023/bin/x86_64-linux/:$PATH
 export PATH=/home/gustavo/.surrealdb/:$PATH
-
+export PATH=/home/gustavo/.dotnet/:$PATH
+export PATH=/home/gustavo/.dotnet/tools/:$PATH
+export DOTNET_ROOT=/home/gustavo/.dotnet/
 set -o vi
+
+# bun completions
+[ -s "/home/gustavo/.bun/_bun" ] && source "/home/gustavo/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Configs
