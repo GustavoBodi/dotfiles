@@ -20,6 +20,7 @@ export VK_LAYER_PATH=$VULKAN_SDK/etc/vulkan/explicit_layer.d
 export CALIBRE_USE_DARK_PALETTE=1
 
 alias chadwm="startx ~/.config/chadwm/scripts/run.sh"
+alias tt="tt -nohighlight"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME

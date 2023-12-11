@@ -15,8 +15,17 @@ keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
+keymap("n", "<C-w>h", ":split<cr>", opts)
 
-keymap("n", "gd", "<Cmd>lua require('omnisharp_extended').telescope_lsp_definitions()<cr>", opts)
+-- Set Clangd Commands
+keymap("n", "gh", "<Cmd>ClangdSwitchSourceHeader<cr>", opts)
+--keymap("n", "gd", "<Cmd>lua require('omnisharp_extended').telescope_lsp_definitions()<cr>", opts)
+
+vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+vim.keymap.set("n", "gD", function() vim.lsp.buf.declaration() end, opts)
+vim.keymap.set("n", "gt", function() vim.lsp.buf.type_definition() end, opts)
+vim.keymap.set("n", "gi", function() vim.lsp.buf.implementation() end, opts)
+vim.keymap.set("n", "gr", function() vim.lsp.buf.references() end, opts)
 
 keymap('n', '<A-i>', ":ToggleTerm<CR>", opts)
 keymap('t', '<A-i>', "<Cmd>ToggleTerm<CR>", opts)

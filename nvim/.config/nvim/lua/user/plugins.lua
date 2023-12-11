@@ -185,6 +185,15 @@ return packer.startup(function(use)
   -- Omnisharp definition extension
   use {'Hoffs/omnisharp-extended-lsp.nvim'}
 
+  -- Hex Editor
+  use {'RaafatTurki/hex.nvim'}
+
+  -- Cpp Tools
+  use {
+    requires = { "nvim-treesitter/nvim-treesitter" },
+    "Badhi/nvim-treesitter-cpp-tools",
+  }
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
