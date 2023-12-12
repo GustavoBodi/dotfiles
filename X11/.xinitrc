@@ -1,6 +1,6 @@
 pulseaudio --daemonize=yes
 picom --config ~/.config/picom/picom.conf --backend=glx &
 fcitx &
-feh --bg-fill ~/images/pokemon.png
+feh --bg-fill ~/images/wallpaper.jpg
 dwmblocks &
 dbus-launch --sh-syntax dwm
