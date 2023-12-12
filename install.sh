@@ -4,7 +4,7 @@ sudo xbps-install base-devel firefox kitty zsh git gcc gdb neovim python \
   clang-analyzer docker fcitx cargo xorg-server-devel libX11-devel openssh xtools \
   libXft-devel libXinerama-devel cmake ninja meson stow xxd nerd-fonts-ttf \
   mesa-intel-dri sysfsutils xclip tlp upower acpi glxinfo texlive-bin rtorrent \
-  docker-compose
+  docker-compose htop
 
 sudo tlmgr install scheme-full
 sudo ln -s /etc/sv/tlp /var/service/
