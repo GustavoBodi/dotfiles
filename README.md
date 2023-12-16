@@ -7,9 +7,9 @@ Although most of the configurations here can be used in any distribution, the
 install script was made specifically for my needs on void linux. Its usage is
 quite simple:
 
-```
-$ chmod +x ./install.sh
-$ ./install.sh
+```bash
+chmod +x ./install.sh
+./install.sh
 ```
 
 After running it, all the default applications that I use must have been
@@ -21,9 +21,9 @@ All of this files here are to be linked with a terminal utility called gnu
 stow. It basically creates symbolic links from the specified directory to the
 target. The included Makefile makes it easy to use. After cloning the
 repository on your home directory, run:
-```
-$ cd dotfiles
-$ make
+```bash
+cd dotfiles
+make
 ```
 
 ## License
