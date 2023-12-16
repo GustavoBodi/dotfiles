@@ -8,7 +8,7 @@ install script was made specifically for my needs on void linux. Its usage is
 quite simple:
 
 ```bash
-chmod +x ./install.sh
+chmod +x
 ./install.sh
 ```
 
